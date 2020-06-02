@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1590648168 source:f:\code\projects\hangman\handlers\handlers.cpp
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<vector>
+	<string>
+	<algorithm>
+	"../helpers/helpers.h"
+
+1590642164 f:\code\projects\hangman\helpers\helpers.h
+
+1590648241 source:f:\code\projects\hangman\helpers\helpers.cpp
+	<iostream>
+	<vector>
+	<string>
+	<thread>
+	<chrono>
+	<conio.h>
+
+1590647809 source:f:\code\projects\hangman\main.cpp
+	<time.h>
+	"handlers/handlers.h"
+	"helpers/helpers.h"
+
+1590635594 f:\code\projects\hangman\handlers\handlers.h
+	<string>
+	<vector>
+
