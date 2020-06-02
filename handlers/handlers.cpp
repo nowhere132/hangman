@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>        // max, min ...
+#include <ctime>            // clock
+#include <conio.h>          // kbhit
 #include "../helpers/helpers.h"
 using namespace std;
 
@@ -106,7 +108,21 @@ void playGame(string &ans, string &our, string &vec, int &numSuggest) {
         cout << "If you want to use it, press 1\n";
     }
 
-    cout << "\nYour new guess is : ";
+    clock_t Start = clock(), curTime = Start;
+    int len = 10;
+    while (! _kbhit()) {
+        if ((clock() - Start)/CLOCKS_PER_SEC >= 10) {
+            while (vec.size() < 7)
+                vec.push_back('#');
+            return;
+        }
+        if ((clock() - curTime)/CLOCKS_PER_SEC == 1) {
+            cout << "You still have " << --len << " seconds\n";
+            curTime = clock();
+        }
+    }
+
+    cout << "\n\nYour new guess is : ";
     char c;
     cin >> c;
     c = ToLowerChar(c);
@@ -145,7 +161,7 @@ int solve() {
     string needToGuess = ourDeal(idMode);
     string ourGuess(needToGuess.size(), '-');
     string mistakes = "";
-    int numSuggest = needToGuess.size()/2;
+    int numSuggest = needToGuess.size()/3;
 
     // game process
     while (mistakes.size() < 7 && needToGuess != ourGuess) {
